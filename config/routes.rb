@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  get 'club/index'
+  devise_for :users
+#  get 'club/index'
+  get 'club/coffee'
+  get 'club/wine'
+  get 'club/beer'
+  get 'club/cigars'
+  get 'club/games'
+  get 'club/flowers'
+  
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -7,6 +16,13 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'club#index'
 
+   get "/about" => "club#about"
+   get "/why_club" => "club#way_club"
+   get "/about" => "club#about"
+   get "/about" => "club#about"
+   get "/about" => "club#about"
+   get "/about" => "club#about"
+   get "/about" => "club#about"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

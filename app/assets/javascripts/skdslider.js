@@ -17,7 +17,7 @@
         var config = {
             'delay': 2000,
             'animationSpeed': 500,
-            'showNav':true,
+            'showNav':false,
             'autoSlide':true,
             'showNextPrev':false,
             'pauseOnHover':true,
