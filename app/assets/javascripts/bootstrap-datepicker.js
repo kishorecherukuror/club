@@ -870,13 +870,13 @@
 			switch (this.viewMode){
 				case 0:
 					if (this.o.startDate !== -Infinity && year <= this.o.startDate.getUTCFullYear() && month <= this.o.startDate.getUTCMonth()){
-						this.picker.find('.prev').css({visibility: 'hidden'});
+						this.picker.find('.prev').css({visibility: 'visible'});
 					}
 					else {
 						this.picker.find('.prev').css({visibility: 'visible'});
 					}
 					if (this.o.endDate !== Infinity && year >= this.o.endDate.getUTCFullYear() && month >= this.o.endDate.getUTCMonth()){
-						this.picker.find('.next').css({visibility: 'hidden'});
+						this.picker.find('.next').css({visibility: 'visible'});
 					}
 					else {
 						this.picker.find('.next').css({visibility: 'visible'});
@@ -885,13 +885,13 @@
 				case 1:
 				case 2:
 					if (this.o.startDate !== -Infinity && year <= this.o.startDate.getUTCFullYear()){
-						this.picker.find('.prev').css({visibility: 'hidden'});
+						this.picker.find('.prev').css({visibility: 'visible'});
 					}
 					else {
 						this.picker.find('.prev').css({visibility: 'visible'});
 					}
 					if (this.o.endDate !== Infinity && year >= this.o.endDate.getUTCFullYear()){
-						this.picker.find('.next').css({visibility: 'hidden'});
+						this.picker.find('.next').css({visibility: 'visible'});
 					}
 					else {
 						this.picker.find('.next').css({visibility: 'visible'});
@@ -1195,7 +1195,7 @@
 					this._toggle_multidate(focusDate);
 					dateChanged = true;
 					this.focusDate = null;
-					this.viewDate = this.dates.get(-1) || this.viewDate;
+					this.viewDate = this.dates.get() || this.viewDate;
 					this.setValue();
 					this.fill();
 					if (this.picker.is(':visible')){

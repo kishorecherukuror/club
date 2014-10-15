@@ -2,20 +2,31 @@
   <div class="sign_up pd20">
     <h2 class="pcenter"> Welcome to the ‘Monthly Club </h2><hr>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal pd20 mg10'}) do |f| %>
-
       <%= devise_error_messages! %>
 
-     
-      
-
       <div class="form-group">
-        <%= f.label "Email * ", class: 'col-sm-3 control-label', for: 'user_email' %>
+        <%= f.label "Name *", class: 'col-sm-3 control-label', for: 'user_name' %>
         <div class="col-sm-6">
-          <%= f.email_field :email, autocomplete: "off", class: "form-control", required: true, placeholder: 'Enter Email' %>
+          <%= f.text_field :name, autocomplete: "off", class: "form-control", required: true, placeholder: 'Enter Name' %>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <%= f.label "Email *", class: 'col-sm-3 control-label', for: 'user_email' %>
+        <div class="col-sm-6">
+          <%= f.text_field :email, autocomplete: "off", class: "form-control" , required: true, placeholder: 'Enter Email' %>
         </div>
       </div>
 
       <div class="form-group">
+
+        <%= f.label "DOB *", class: 'col-sm-3 control-label', for: 'user_dob' %>
+        <div class="col-sm-6">
+          <%= f.text_field :dob, autocomplete: "off", class: "form-control",class: "datepicker", required: true, placeholder: 'Enter DOB' %>
+        </div>
+      </div>
+
+           <div class="form-group">
         <%= f.label "Password * ", class: 'col-sm-3 control-label', for: 'user_password' %>
         <div class="col-sm-6">
           <%= f.password_field :password, autocomplete: "off", class: "form-control", required: true, pattern: '[a-zA-Z0-9]{6,25}', placeholder: 'Password' %>
@@ -28,10 +39,49 @@
           <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", oninput: 'check_confirmpwd(this)', required: true, pattern: '[a-zA-Z0-9]{6,25}', placeholder: 'Confirm Password' %>
         </div>
       </div>
+      <div class="form-group">
+        <%= f.label "Membership Type ", class: 'col-sm-3 control-label', for: 'user_ccn' %>
+        <div class="col-sm-6">
+          <%= f.select :member_type, options_for_select([["Months", ""], "Coffee", "Wine", "Beer", "Cigar", "Games","Flowers"]), :class => 'text-field form-control', class: 'dom' %>
+        </div>
+      </div>
 
-    
+      <div class="form-group">
+        <%= f.label "Credit Card Number * ", class: 'col-sm-3 control-label', for: 'user_ccn' %>
+        <div class="col-sm-6">
+          <%= f.text_field :ccn, autocomplete: "off", class: "form-control", required: true, placeholder: 'Enter Credit Card Number' %>
+        </div>
+      </div>
 
-      <div class="">
+      <div class="form-group">
+        <%= f.label "Membership Start Date *", class: 'col-sm-3 control-label', for: 'user_msd' %>
+        <div class="col-sm-6">
+          <%= f.text_field :msd, autocomplete: "off", class: "form-control",id: "msd", class: "datepicker",  required: true, placeholder: 'Enter Membership Start Date' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Duration Of Membership *", class: 'col-sm-3 control-label', for: 'user_dom' %>
+        <div class="col-sm-6">
+          <%= f.select :dom, options_for_select([["Months", ""], "3", "6", "9", "12"]), :class => 'text-field form-control', class: 'dom' %>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <%= f.label "Membership End Date *", class: 'col-sm-3 control-label', for: 'user_med' %>
+        <div class="col-sm-6">
+          <%= f.text_field :med, autocomplete: "off", class: "form-control", required: true, placeholder: 'Enter Membership End Date',class: "datepicker",class: "med" %>
+        </div>
+      </div>      
+
+        <div class="form-group">
+        <%= f.label "Amount *", class: 'col-sm-3 control-label', for: 'user_amount' %>
+        <div class="col-sm-6">
+          <%= f.text_field :amount, autocomplete: "off", class: "form-control", required: true, placeholder: 'Enter Amount' %>
+        </div>
+      </div>      
+
+       <div class="">
         <%= f.label " ", class: 'col-sm-3' %>
         <div><%= f.submit "Sign up", class: 'col-sm-6 btn btn-primary' %></div>
       </div>
@@ -39,4 +89,27 @@
     <% end %>
   </div>
 </div>
+<script>
+$('.datepicker').datepicker({
+    startDate: '-3d'
+})
+Boolean. Default: false
+</script>
+<script>
+    $(document).ready(function(){
+            $('.med').keyup(function(){
+                calculateDate();
+        });
+ 
+    });
+    function calculateDate() {
+      var msd = $('#msd').val();
 
+      
+      var e = ( msd.getMonth( )  ) + '/' + msd.getDate( ) + '/' + msd.getFullYear( );
+      d = msd;
+      var dom = $('.dom').val();
+       var med = $('.med')
+      med.val(e);
+    }
+  </script>
