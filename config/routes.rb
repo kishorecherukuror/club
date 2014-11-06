@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'punchqueries/new'
+
+  get 'punchqueries/create'
+  post 'punchqueries/create'
+
   devise_for :users, :controllers => { registrations: 'registrations' } 
 #  get 'club/index'
   get 'club/coffee'

@@ -5,13 +5,7 @@ class ClubController < ApplicationController
   def wine
   end
   def beer
-    dob = User.find(current_user)
-    puts "**********************"
-    puts dob.dob
-    puts "**********************"  
-    
-    @year = Date.today.year - dob.year
-    puts @year
+   
 
   end
   def cigars
